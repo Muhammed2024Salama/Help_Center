@@ -15,11 +15,13 @@ class TicketResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'      => $this->id,
-            'user_id' => $this->user_id,
-            'subject' => $this->subject,
-            'message' => $this->message,
-            'status'  => $this->status,
-            'created_at' => $this->created_at,
-        ];    }
+            'id'        => $this->id,
+            'user_id'   => $this->user_id,
+            'subject'   => $this->subject,
+            'message'   => $this->message,
+            'status'    => $this->status,
+            'created_at'=> $this->created_at,
+            'replies'   => ReplyResource::collection($this->whenLoaded('replies')),
+        ];
+    }
 }
