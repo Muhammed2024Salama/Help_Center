@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Interface\FaqInterface;
-use App\Models\Faq;
+use App\Interface\TicketInterface;
+use App\Models\Ticket;
 
-class FaqRepository implements FaqInterface
+class TicketRepository implements TicketInterface
 {
     /**
      * @return \Illuminate\Database\Eloquent\Collection|mixed
      */
     public function all()
     {
-        return Faq::all();
+        return Ticket::all();
     }
 
     /**
@@ -21,7 +21,7 @@ class FaqRepository implements FaqInterface
      */
     public function find($id)
     {
-        return Faq::findOrFail($id);
+        return Ticket::findOrFail($id);
     }
 
     /**
@@ -30,7 +30,7 @@ class FaqRepository implements FaqInterface
      */
     public function create(array $data)
     {
-        return Faq::create($data);
+        return Ticket::create($data);
     }
 
     /**
@@ -40,9 +40,9 @@ class FaqRepository implements FaqInterface
      */
     public function update($id, array $data)
     {
-        $faq = Faq::findOrFail($id);
-        $faq->update($data);
-        return $faq;
+        $ticket = Ticket::findOrFail($id);
+        $ticket->update($data);
+        return $ticket;
     }
 
     /**
@@ -51,7 +51,7 @@ class FaqRepository implements FaqInterface
      */
     public function delete($id)
     {
-        $faq = Faq::findOrFail($id);
-        return $faq->delete();
+        $ticket = Ticket::findOrFail($id);
+        return $ticket->delete();
     }
 }
