@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TicketStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
@@ -14,6 +15,13 @@ class Ticket extends Model
         'subject',
         'message',
         'status'
+    ];
+
+    /**
+     * @var array
+     */
+    protected $attributes = [
+        'status' => TicketStatus::OPEN->value,
     ];
 
     /**

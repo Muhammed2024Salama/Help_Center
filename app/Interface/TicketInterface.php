@@ -2,7 +2,7 @@
 
 namespace App\Interface;
 
-interface FaqInterface
+interface TicketInterface
 {
     /**
      * @return mixed

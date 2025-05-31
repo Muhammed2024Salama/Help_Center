@@ -8,13 +8,22 @@ use Illuminate\Http\Request;
 
 class FaqService
 {
+    /**
+     * @var FaqInterface
+     */
     protected $faqRepo;
 
+    /**
+     * @param FaqInterface $faqRepo
+     */
     public function __construct(FaqInterface $faqRepo)
     {
         $this->faqRepo = $faqRepo;
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $data = $this->faqRepo->all();
@@ -25,6 +34,10 @@ class FaqService
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $faq = $this->faqRepo->create($request->validated());
@@ -35,6 +48,10 @@ class FaqService
         ]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show($id)
     {
         $faq = $this->faqRepo->find($id);
@@ -45,6 +62,11 @@ class FaqService
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(Request $request, $id)
     {
         $faq = $this->faqRepo->update($id, $request->validated());
@@ -55,6 +77,10 @@ class FaqService
         ]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy($id)
     {
         $this->faqRepo->delete($id);
